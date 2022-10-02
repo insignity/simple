@@ -6,6 +6,13 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     final store = context.read<AuthStore>();
     store.login();
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text('Авторизация'),),
+      body: Column(
+        children: [
+
+        ],
+      ),
+    );
   }
 }

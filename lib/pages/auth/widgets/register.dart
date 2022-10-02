@@ -5,6 +5,7 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final store = context.read<AuthStore>();
     return Container();
   }
 }

@@ -5,6 +5,7 @@ import 'package:simple/services/di/service_locator.dart';
 import 'models/models.dart';
 import 'pages/auth/auth_page.dart';
 import 'services/api/api.dart';
+import 'theming/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.appTheme,
+      debugShowCheckedModeBanner: false,
       home: AuthPage(),
     );
   }

@@ -1,0 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+import 'package:simple/utils/typedefs.dart';
+part 'user_model.dart';
+part 'models.g.dart';
+part 'tokens.dart';
+part 'restaurant_model.dart';
+part 'image_model.dart';
+part 'coords_model.dart';
+part 'schedule_model.dart';

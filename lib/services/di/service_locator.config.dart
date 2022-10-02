@@ -8,9 +8,10 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../pages/auth/auth_store.dart' as _i5;
 import '../api/api.dart' as _i3;
-import '../api/api_module.dart' as _i5;
-import '../storage/storage_module.dart' as _i6;
+import '../api/api_module.dart' as _i6;
+import '../storage/storage_module.dart' as _i7;
 import '../storage/storage_service.dart'
     as _i4; // ignore_for_file: unnecessary_lambdas
 
@@ -24,9 +25,11 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i3.Api>(() => apiModule.getClient());
   await gh.singletonAsync<_i4.StorageService>(() => storageModule.instance(),
       preResolve: true);
+  gh.factory<_i5.AuthStore>(
+      () => _i5.AuthStore(get<_i4.StorageService>(), get<_i3.Api>()));
   return get;
 }
 
-class _$ApiModule extends _i5.ApiModule {}
+class _$ApiModule extends _i6.ApiModule {}
 
-class _$StorageModule extends _i6.StorageModule {}
+class _$StorageModule extends _i7.StorageModule {}

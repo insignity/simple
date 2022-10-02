@@ -28,6 +28,14 @@ abstract class Api {
     @Field() required String password,
   });
 
+ @POST("/auth/registration/customer/new")
+  Future<UserData> register({
+    @Field() required String email,
+    @Field() required String nickname,
+    @Field() required String phone,
+    @Field() required String password,
+  });
+
   @GET("/restaurants/all")
   Future<RestaurantsData> getAllRestaurants({
     @Field() int page = 1,

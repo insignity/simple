@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:simple/l10n/l10n.dart';
 import 'package:simple/services/di/service_locator.dart' as di;
 import 'package:simple/services/di/service_locator.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'models/models.dart';
 import 'pages/auth/auth_page.dart';
@@ -21,12 +24,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-
   Future getAllRestaurants() async {
     final restaurants = await sl<Api>().getAllRestaurants();
     print(restaurants.restaurants.first.title);
@@ -37,6 +34,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: AppTheme.appTheme,
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('ru', 'RU')],
       home: AuthPage(),
     );
   }

@@ -46,6 +46,9 @@ dependencies:
   flutter_mobx: ^2.0.6+4
   provider: ^6.0.3
   intl: ^0.17.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^1.1.5
 
 dev_dependencies:
   flutter_test:
@@ -75,8 +78,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-#  assets:
-#    - assets/fonts
+  assets:
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

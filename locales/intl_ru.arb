@@ -1,0 +1,14 @@
+{
+  "@@locale": "ru",
+  "Authorization": "Авторизация",
+  "LoginOrMail": "Логин или почта",
+  "Enter": "Войти",
+  "Register": "Зарегистрироваться",
+  "Registration": "Регистрация",
+  "Login": "Логин",
+  "Phone": "Телефон",
+  "Mail": "Почта",
+  "Password": "Пароль",
+  "CreateAccount": "Создать аккаунт",
+  "Search": "Поиск"
+}

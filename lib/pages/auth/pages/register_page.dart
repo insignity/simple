@@ -1,7 +1,7 @@
 part of '../auth_page.dart';
 
-class Register extends StatelessWidget {
-  const Register({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,16 +86,18 @@ class Register extends StatelessWidget {
                 Radius.circular(6),
               ),
             ),
-            child: ElevatedButton(
-              onPressed: () {
+            child: FutureButton(
+              onPressed: () async {
+                await
                 store.register(
                   email: mailController.text,
                   phone: phoneController.text,
                   nickname: nicknameController.text,
                   password: passwordController.text,
                 );
+                context.router.navigate(const RootRoute());
               },
-              child: Text(context.$.CreateAccount),
+              child: Text(context.$.LoginOrMail),
             ),
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
 import 'package:simple/services/api/api.dart';
-import 'package:simple/services/storage/storage_service.dart';
+import 'package:simple/services/session/session_service.dart';
 import 'package:simple/utils/runnable_store.dart';
 
 part 'auth_store.g.dart';
@@ -12,16 +12,16 @@ enum AuthStep { login, register }
 class AuthStore = _AuthStore with _$AuthStore;
 
 abstract class _AuthStore extends RunnableStore with Store {
-  final StorageService _storageService;
+  final SessionService _sessionService;
   final Api _api;
 
-  _AuthStore(this._storageService, this._api);
+  _AuthStore(this._sessionService, this._api);
 
   @readonly
   AuthStep _step = AuthStep.login;
 
   @computed
-  bool get _isLoggedIn => _storageService.accessToken != null;
+  bool get _isLoggedIn => _sessionService.accessToken != null;
 
   @action
   changeStep() {
@@ -30,7 +30,6 @@ abstract class _AuthStore extends RunnableStore with Store {
     } else {
       _step = AuthStep.login;
     }
-    print(_step);
   }
 
   @action

@@ -159,6 +159,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Лента`
+  String get Line {
+    return Intl.message(
+      'Лента',
+      name: 'Line',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Карта`
+  String get Map {
+    return Intl.message(
+      'Карта',
+      name: 'Map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Избранные`
+  String get Favorites {
+    return Intl.message(
+      'Избранные',
+      name: 'Favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Профиль`
+  String get Profile {
+    return Intl.message(
+      'Профиль',
+      name: 'Profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

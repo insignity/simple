@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:simple/models/models.dart';
+import 'package:simple/services/session/session_service.dart';
 import 'package:simple/services/storage/storage_service.dart';
 import 'package:simple/utils/interceptors/auth_interceptor.dart';
 import 'package:simple/utils/typedefs.dart';
@@ -11,13 +12,13 @@ part 'api.g.dart';
 abstract class Api {
   factory Api(
     Dio dio, {
-    required StorageService storageService,
+    required SessionService sessionService,
     String? baseUrl,
   }) {
     return _Api(
         dio
           ..interceptors.addAll([
-            AuthInterceptor(storageService),
+            AuthInterceptor(sessionService),
           ]),
         baseUrl: baseUrl);
   }

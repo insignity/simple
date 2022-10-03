@@ -26,11 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "CreateAccount":
             MessageLookupByLibrary.simpleMessage("Создать аккаунт"),
         "Enter": MessageLookupByLibrary.simpleMessage("Войти"),
+        "Favorites": MessageLookupByLibrary.simpleMessage("Избранные"),
+        "Line": MessageLookupByLibrary.simpleMessage("Лента"),
         "Login": MessageLookupByLibrary.simpleMessage("Логин"),
         "LoginOrMail": MessageLookupByLibrary.simpleMessage("Логин или почта"),
         "Mail": MessageLookupByLibrary.simpleMessage("Почта"),
+        "Map": MessageLookupByLibrary.simpleMessage("Карта"),
         "Password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "Phone": MessageLookupByLibrary.simpleMessage("Телефон"),
+        "Profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "Register": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
         "Registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
         "Search": MessageLookupByLibrary.simpleMessage("Поиск")

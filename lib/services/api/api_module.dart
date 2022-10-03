@@ -13,6 +13,6 @@ abstract class ApiModule {
             baseUrl: 'http://188.225.83.80:6719/api/v1',
           ),
         ),
-        storageService: sl(),
+        sessionService: sl(),
       );
 }

@@ -10,5 +10,9 @@
   "Mail": "Почта",
   "Password": "Пароль",
   "CreateAccount": "Создать аккаунт",
-  "Search": "Поиск"
+  "Search": "Поиск",
+  "Line": "Лента",
+  "Map": "Карта",
+  "Favorites": "Избранные",
+  "Profile": "Профиль"
 }

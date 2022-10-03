@@ -1,18 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:simple/models/models.dart';
 import 'package:simple/services/di/service_locator.dart';
+import 'package:simple/services/session/session_service.dart';
 import 'package:simple/services/storage/storage_service.dart';
 
 class AuthInterceptor extends Interceptor {
-  final StorageService storageService;
+  final SessionService sessionService;
 
-  AuthInterceptor(this.storageService);
+  AuthInterceptor(this.sessionService);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (storageService.accessToken != null) {
+    if (sessionService.isLoggedIn) {
       options.headers.addAll(
-        {"Authorization": "Bearer ${storageService.accessToken!.accessToken}"},
+        {"Authorization": "Bearer ${sessionService.accessToken!.accessToken}"},
       );
     }
     super.onRequest(options, handler);
@@ -22,8 +23,8 @@ class AuthInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (response.data != null && response.data['tokens'] != null) {
       final tokens = response.data['tokens'];
-      storageService.accessToken = AccessToken.fromJson(tokens);
-      storageService.refreshToken = RefreshToken.fromJson(tokens);
+      sessionService.updateAccessToken(AccessToken.fromJson(tokens));
+      sessionService.updateRefreshToken(RefreshToken.fromJson(tokens));
     }
     print(response.data);
     super.onResponse(response, handler);

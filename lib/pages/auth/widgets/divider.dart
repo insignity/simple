@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-
+part of '../auth_page.dart';
 class AppDivider extends StatelessWidget {
   const AppDivider({Key? key}) : super(key: key);
 

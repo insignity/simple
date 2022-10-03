@@ -1,7 +1,7 @@
 part of '../auth_page.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,13 @@ class Login extends StatelessWidget {
                 Radius.circular(6),
               ),
             ),
-            child: ElevatedButton(
-              onPressed: () {
-                store.login(
+            child: FutureButton(
+              onPressed: () async {
+                await store.login(
                   email: loginController.text,
                   password: passwordController.text,
                 );
+                context.router.navigate(const RootRoute());
               },
               child: Text(context.$.LoginOrMail),
             ),

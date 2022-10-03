@@ -11,7 +11,7 @@ class AppTheme {
   static final appTheme = ThemeData(
     appBarTheme: AppBarTheme(
       color: Colors.white,
-      titleTextStyle: AppTextTheme.txt15w500,
+      titleTextStyle: AppTextStyles.txt15w500,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
       ),

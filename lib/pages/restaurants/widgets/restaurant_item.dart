@@ -1,14 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:simple/models/models.dart';
+import 'package:simple/theming/app_icons.dart';
+import 'package:simple/theming/app_text_theme.dart';
 
 class RestaurantItem extends StatelessWidget {
+  final RestaurantModel restaurant;
 
-  const RestaurantItem({Key? key}) : super(key: key);
+  const RestaurantItem({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    bool hasImage = false;
+    bool hasAddress = false;
+    if (restaurant.images != null && restaurant.images!.isNotEmpty) {
+      hasImage = restaurant.images!.first.url.isNotEmpty;
+    }
+    if (restaurant.coords?.addressName != null) {
+      hasAddress = restaurant.coords!.addressName!.isNotEmpty;
+    }
+    bool isFavorite = restaurant.isFavorite ?? false;
+    return Container(margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6),
+      ),
       height: 234,
-
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: SizedBox(
+              height: 150,
+              child: hasImage
+                  ? Image.network(restaurant.images!.first.url)
+                  : const ColoredBox(color: Colors.red),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 11, left: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        restaurant.title,
+                        style: AppTextStyles.txt16w700,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        restaurant.description,
+                        style: AppTextStyles.txt13w400,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (hasAddress)
+                        Text(
+                          restaurant.coords!.addressName!,
+                          style: AppTextStyles.txt13w400,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      // Expanded(child: Text(restaurant.title, style: AppTextStyles.txt16w700)),
+                      // Expanded(child: Text(restaurant.description, style: AppTextStyles.txt13w400)),
+                    ],
+                  ),
+                ),
+              ),
+              IconButton(
+                padding: EdgeInsets.only(top: 24, right: 24),
+                onPressed: () {},
+                icon: isFavorite
+                    ? SvgPicture.asset(AppIcons.favoritesFilled)
+                    : SvgPicture.asset(AppIcons.favorites),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

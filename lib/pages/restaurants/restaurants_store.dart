@@ -24,6 +24,7 @@ abstract class _RestaurantsStore extends RunnableStore with Store {
       final restaurantsData = await _api.getAllRestaurants();
 
       _restaurants = restaurantsData.restaurants;
+      print(_restaurants.length);
     });
   }
 }

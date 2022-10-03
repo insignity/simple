@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:simple/pages/auth/auth_page.dart';
+import 'package:simple/pages/restaurants/widgets/restaurant_item.dart';
+import 'package:simple/pages/restaurants/widgets/restaurant_search.dart';
 import 'package:simple/services/di/service_locator.dart';
 
 import 'restaurants_store.dart';
@@ -10,27 +13,46 @@ class RestaurantsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = sl<RestaurantsStore>();
-    return Observer(
-      builder: (context) {
-        if (store.isRunning) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (store.hasError) {
-          return Text(store.error.toString());
-        } else {
-          return ListView.separated(
-              itemBuilder: (context, index) {
-                final restaurant = store.restaurants[index];
-                return ListTile(title: Text(restaurant.title));
-              },
-              separatorBuilder: (context, index) {
-                return const AppDivider();
-              },
-              itemCount: store.restaurants.length);
-        }
-      },
+    FocusNode focusNode = FocusNode();
+    return Provider<RestaurantsStore>(
+      create: (_) => sl(),
+      child: GestureDetector(
+
+        child: SafeArea(
+          child: Observer(
+            builder: (context) {
+              final store = context.read<RestaurantsStore>();
+              if (store.isRunning) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (store.hasError) {
+                return Text(store.error.toString());
+              } else {
+                return Column(
+                  children: [
+                    RestaurantSearch(focusNode: focusNode),
+                    Expanded(
+                      child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          final restaurant = store.restaurants[index];
+                          return RestaurantItem(restaurant: restaurant);
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(
+                            height: 20,
+                          );
+                        },
+                        itemCount: store.restaurants.length,
+                      ),
+                    ),
+                  ],
+                );
+              }
+            },
+          ),
+        ),
+      ),
     );
   }
 }

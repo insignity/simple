@@ -4,7 +4,7 @@ abstract class AppFonts {
   static const String manrope = 'Manrope';
 }
 
-class AppTextTheme {
+class AppTextStyles {
   static const txt15w500 = TextStyle(
     fontFamily: AppFonts.manrope,
     fontWeight: FontWeight.w500,
@@ -16,6 +16,13 @@ class AppTextTheme {
     fontFamily: AppFonts.manrope,
     fontWeight: FontWeight.w400,
     fontSize: 14,
+    color: Colors.black,
+  );
+
+  static const txt13w400 = TextStyle(
+    fontFamily: AppFonts.manrope,
+    fontWeight: FontWeight.w400,
+    fontSize: 13,
     color: Colors.black,
   );
 

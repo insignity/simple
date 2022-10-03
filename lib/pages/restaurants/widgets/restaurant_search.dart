@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:simple/pages/restaurants/restaurants_store.dart';
 import 'package:simple/theming/app_icons.dart';
 import 'package:simple/theming/app_text_theme.dart';
 import 'package:simple/theming/app_theme.dart';
@@ -12,9 +14,11 @@ class RestaurantSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final store = context.read<RestaurantsStore>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: TextFormField(
+        onChanged: (value) => store.query = value,
         focusNode: focusNode ?? FocusNode(),
         decoration: InputDecoration(
           prefixIcon: SvgPicture.asset(

@@ -16,15 +16,28 @@ abstract class _RestaurantsStore extends RunnableStore with Store {
     _init();
   }
 
-  @readonly
-  List<RestaurantModel> _restaurants = [];
+  @observable
+  String query = "";
+
+  @observable
+  List<RestaurantModel> _allRestaurants = [];
+
+  @computed
+  List<RestaurantModel> get restaurants {
+    List<RestaurantModel> foundRestaurants = [];
+    for (final restaurant in _allRestaurants) {
+      if (restaurant.title.contains(query)) {
+        foundRestaurants.add(restaurant);
+      }
+    }
+    return foundRestaurants;
+  }
 
   Future<void> _init() async {
     await run(() async {
       final restaurantsData = await _api.getAllRestaurants();
 
-      _restaurants = restaurantsData.restaurants;
-      print(_restaurants.length);
+      _allRestaurants = restaurantsData.restaurants;
     });
   }
 }

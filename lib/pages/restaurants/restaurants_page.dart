@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:simple/pages/auth/auth_page.dart';
 import 'package:simple/pages/restaurants/widgets/restaurant_item.dart';
 import 'package:simple/pages/restaurants/widgets/restaurant_search.dart';
 import 'package:simple/services/di/service_locator.dart';
@@ -17,7 +16,7 @@ class RestaurantsPage extends StatelessWidget {
     return Provider<RestaurantsStore>(
       create: (_) => sl(),
       child: GestureDetector(
-
+        onTap: () => focusNode.unfocus(),
         child: SafeArea(
           child: Observer(
             builder: (context) {

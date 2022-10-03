@@ -29,7 +29,7 @@ abstract class Api {
     @Field() required String password,
   });
 
- @POST("/auth/registration/customer/new")
+  @POST("/auth/registration/customer/new")
   Future<UserData> register({
     @Field() required String email,
     @Field() required String nickname,
@@ -42,4 +42,13 @@ abstract class Api {
     @Field() int page = 1,
     @Field() int perPage = 10,
   });
+
+  @GET("/likes/all")
+  Future<RestaurantsData> getAllFavorites();
+
+  @POST("/likes/new")
+  Future<void> addFavorite({@Field("restaurant_id") required int id});
+
+  @DELETE("/likes/{id}")
+  Future<void> removeFavorite({@Path() required int id});
 }

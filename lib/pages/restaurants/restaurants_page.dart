@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:simple/pages/restaurants/widgets/restaurant_item.dart';
+import 'package:simple/widgets/restaurant_item.dart';
 import 'package:simple/pages/restaurants/widgets/restaurant_search.dart';
 import 'package:simple/services/di/service_locator.dart';
 
@@ -35,7 +35,13 @@ class RestaurantsPage extends StatelessWidget {
                       child: ListView.separated(
                         itemBuilder: (context, index) {
                           final restaurant = store.restaurants[index];
-                          return RestaurantItem(restaurant: restaurant);
+                          return RestaurantItem(
+                            restaurant: restaurant,
+                            onTapIcon: () => store.changeFavorite(
+                              id: restaurant.id,
+                              isFavorite: restaurant.isFavorite,
+                            ),
+                          );
                         },
                         separatorBuilder: (context, index) {
                           return const SizedBox(

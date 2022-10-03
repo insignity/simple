@@ -49,6 +49,23 @@ mixin _$RestaurantsStore on _RestaurantsStore, Store {
     });
   }
 
+  late final _$_initAsyncAction =
+      AsyncAction('_RestaurantsStore._init', context: context);
+
+  @override
+  Future<void> _init() {
+    return _$_initAsyncAction.run(() => super._init());
+  }
+
+  late final _$changeFavoriteAsyncAction =
+      AsyncAction('_RestaurantsStore.changeFavorite', context: context);
+
+  @override
+  Future<void> changeFavorite({required int id, required bool isFavorite}) {
+    return _$changeFavoriteAsyncAction
+        .run(() => super.changeFavorite(id: id, isFavorite: isFavorite));
+  }
+
   @override
   String toString() {
     return '''

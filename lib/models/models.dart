@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:simple/utils/typedefs.dart';
 part 'user_model.dart';

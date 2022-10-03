@@ -3,7 +3,7 @@ part of 'models.dart';
 @JsonSerializable()
 class RestaurantModel {
   final int id;
-  final bool? isFavorite;
+  final bool isFavorite;
   final String title;
   final String description;
   final int? scheduleId;
@@ -28,8 +28,25 @@ class RestaurantModel {
     required this.userId,
   });
 
-  factory RestaurantModel.fromJson(Json json) =>
-      _$RestaurantModelFromJson(json);
+  factory RestaurantModel.fromJson(Json json) {
+    return RestaurantModel(
+      schedule: ScheduleModel.fromJson(json),
+      coords: CoordsModel.fromJson(json),
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Json))
+          .toList(),
+      user: json['user'] == null
+          ? null
+          : UserModel.fromJson(json['user'] as Json),
+      id: json['id'],
+      isFavorite: json['is_favourite'] ?? false,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      scheduleId: json['scheduleId'] as int?,
+      coordsId: json['coordsId'] as int?,
+      userId: json['userId'] as int?,
+    );
+  }
 
   Json toJson() => _$RestaurantModelToJson(this);
 }

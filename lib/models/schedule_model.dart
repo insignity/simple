@@ -3,8 +3,8 @@ part of 'models.dart';
 @JsonSerializable()
 class ScheduleModel {
   final int id;
-  final String opening;
-  final String closing;
+  final String? opening;
+  final String? closing;
 
   const ScheduleModel({
     required this.id,

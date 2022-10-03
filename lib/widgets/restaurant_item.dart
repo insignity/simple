@@ -6,8 +6,13 @@ import 'package:simple/theming/app_text_theme.dart';
 
 class RestaurantItem extends StatelessWidget {
   final RestaurantModel restaurant;
+  final VoidCallback onTapIcon;
 
-  const RestaurantItem({Key? key, required this.restaurant}) : super(key: key);
+  const RestaurantItem({
+    Key? key,
+    required this.restaurant,
+    required this.onTapIcon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +24,8 @@ class RestaurantItem extends StatelessWidget {
     if (restaurant.coords?.addressName != null) {
       hasAddress = restaurant.coords!.addressName!.isNotEmpty;
     }
-    bool isFavorite = restaurant.isFavorite ?? false;
-    return Container(margin: const EdgeInsets.symmetric(horizontal: 16),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -66,16 +71,14 @@ class RestaurantItem extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                      // Expanded(child: Text(restaurant.title, style: AppTextStyles.txt16w700)),
-                      // Expanded(child: Text(restaurant.description, style: AppTextStyles.txt13w400)),
                     ],
                   ),
                 ),
               ),
               IconButton(
-                padding: EdgeInsets.only(top: 24, right: 24),
-                onPressed: () {},
-                icon: isFavorite
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                onPressed: onTapIcon,
+                icon: restaurant.isFavorite
                     ? SvgPicture.asset(AppIcons.favoritesFilled)
                     : SvgPicture.asset(AppIcons.favorites),
               ),

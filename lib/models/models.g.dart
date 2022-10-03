@@ -61,7 +61,7 @@ RestaurantModel _$RestaurantModelFromJson(Map<String, dynamic> json) =>
           ? null
           : UserModel.fromJson(json['user'] as Map<String, dynamic>),
       id: json['id'] as int,
-      isFavorite: json['isFavorite'] as bool?,
+      isFavorite: json['isFavorite'] as bool,
       title: json['title'] as String,
       description: json['description'] as String,
       scheduleId: json['scheduleId'] as int?,
@@ -111,8 +111,8 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
 
 CoordsModel _$CoordsModelFromJson(Map<String, dynamic> json) => CoordsModel(
       id: json['id'] as int,
-      longitude: (json['longitude'] as num).toDouble(),
-      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
       addressName: json['addressName'] as String?,
     );
 
@@ -127,8 +127,8 @@ Map<String, dynamic> _$CoordsModelToJson(CoordsModel instance) =>
 ScheduleModel _$ScheduleModelFromJson(Map<String, dynamic> json) =>
     ScheduleModel(
       id: json['id'] as int,
-      opening: json['opening'] as String,
-      closing: json['closing'] as String,
+      opening: json['opening'] as String?,
+      closing: json['closing'] as String?,
     );
 
 Map<String, dynamic> _$ScheduleModelToJson(ScheduleModel instance) =>

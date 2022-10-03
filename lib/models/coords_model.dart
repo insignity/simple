@@ -3,8 +3,8 @@ part of 'models.dart';
 @JsonSerializable()
 class CoordsModel {
   final int id;
-  final double longitude;
-  final double latitude;
+  final double? longitude;
+  final double? latitude;
   final String? addressName;
 
   const CoordsModel({

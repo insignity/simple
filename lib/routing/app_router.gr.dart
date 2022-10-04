@@ -32,9 +32,9 @@ class _$AppRouter extends RootStackRouter {
           opaque: true,
           barrierDismissible: false);
     },
-    MainRouter.name: (routeData) {
+    RestaurantsRouter.name: (routeData) {
       return AdaptivePage<dynamic>(
-          routeData: routeData, child: const RestaurantsPage());
+          routeData: routeData, child: const EmptyRouterPage());
     },
     MapRouter.name: (routeData) {
       return AdaptivePage<dynamic>(
@@ -47,6 +47,17 @@ class _$AppRouter extends RootStackRouter {
     ProfileRouter.name: (routeData) {
       return AdaptivePage<dynamic>(
           routeData: routeData, child: const ProfilePage());
+    },
+    RestaurantsRoute.name: (routeData) {
+      return AdaptivePage<dynamic>(
+          routeData: routeData, child: const RestaurantsPage());
+    },
+    RestaurantDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<RestaurantDetailsRouteArgs>();
+      return AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: RestaurantDetailsPage(
+              key: args.key, restaurant: args.restaurant, id: args.id));
     }
   };
 
@@ -55,7 +66,17 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(RootRoute.name, path: '/', guards: [
           authGuard
         ], children: [
-          RouteConfig(MainRouter.name, path: 'main', parent: RootRoute.name),
+          RouteConfig(RestaurantsRouter.name,
+              path: 'restaurants',
+              parent: RootRoute.name,
+              children: [
+                RouteConfig(RestaurantsRoute.name,
+                    path: '', parent: RestaurantsRouter.name),
+                RouteConfig(RestaurantDetailsRoute.name,
+                    path: ':id',
+                    parent: RestaurantsRouter.name,
+                    usesPathAsKey: true)
+              ]),
           RouteConfig(MapRouter.name, path: 'map', parent: RootRoute.name),
           RouteConfig(FavoritesRouter.name,
               path: 'favorites', parent: RootRoute.name),
@@ -84,11 +105,13 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [RestaurantsPage]
-class MainRouter extends PageRouteInfo<void> {
-  const MainRouter() : super(MainRouter.name, path: 'main');
+/// [EmptyRouterPage]
+class RestaurantsRouter extends PageRouteInfo<void> {
+  const RestaurantsRouter({List<PageRouteInfo>? children})
+      : super(RestaurantsRouter.name,
+            path: 'restaurants', initialChildren: children);
 
-  static const String name = 'MainRouter';
+  static const String name = 'RestaurantsRouter';
 }
 
 /// generated route for
@@ -113,4 +136,42 @@ class ProfileRouter extends PageRouteInfo<void> {
   const ProfileRouter() : super(ProfileRouter.name, path: 'profile');
 
   static const String name = 'ProfileRouter';
+}
+
+/// generated route for
+/// [RestaurantsPage]
+class RestaurantsRoute extends PageRouteInfo<void> {
+  const RestaurantsRoute() : super(RestaurantsRoute.name, path: '');
+
+  static const String name = 'RestaurantsRoute';
+}
+
+/// generated route for
+/// [RestaurantDetailsPage]
+class RestaurantDetailsRoute extends PageRouteInfo<RestaurantDetailsRouteArgs> {
+  RestaurantDetailsRoute(
+      {Key? key, required RestaurantModel restaurant, required String id})
+      : super(RestaurantDetailsRoute.name,
+            path: ':id',
+            args: RestaurantDetailsRouteArgs(
+                key: key, restaurant: restaurant, id: id),
+            rawPathParams: {'id': id});
+
+  static const String name = 'RestaurantDetailsRoute';
+}
+
+class RestaurantDetailsRouteArgs {
+  const RestaurantDetailsRouteArgs(
+      {this.key, required this.restaurant, required this.id});
+
+  final Key? key;
+
+  final RestaurantModel restaurant;
+
+  final String id;
+
+  @override
+  String toString() {
+    return 'RestaurantDetailsRouteArgs{key: $key, restaurant: $restaurant, id: $id}';
+  }
 }

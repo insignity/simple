@@ -199,6 +199,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Описание`
+  String get Description {
+    return Intl.message(
+      'Описание',
+      name: 'Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подробнее`
+  String get More {
+    return Intl.message(
+      'Подробнее',
+      name: 'More',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Работаем с `
+  String get WorkFrom {
+    return Intl.message(
+      'Работаем с ',
+      name: 'WorkFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` до `
+  String get till {
+    return Intl.message(
+      ' до ',
+      name: 'till',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

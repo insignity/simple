@@ -32,6 +32,13 @@ class AppTextStyles {
     fontSize: 16,
     color: Colors.black,
   );
+
+  static const txt16w400 = TextStyle(
+    fontFamily: AppFonts.manrope,
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
+    color: Colors.black,
+  );
 }
 
 extension AppTextStyleExtension on TextStyle {

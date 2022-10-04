@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authorization": MessageLookupByLibrary.simpleMessage("Авторизация"),
         "CreateAccount":
             MessageLookupByLibrary.simpleMessage("Создать аккаунт"),
+        "Description": MessageLookupByLibrary.simpleMessage("Описание"),
         "Enter": MessageLookupByLibrary.simpleMessage("Войти"),
         "Favorites": MessageLookupByLibrary.simpleMessage("Избранные"),
         "Line": MessageLookupByLibrary.simpleMessage("Лента"),
@@ -32,11 +33,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "LoginOrMail": MessageLookupByLibrary.simpleMessage("Логин или почта"),
         "Mail": MessageLookupByLibrary.simpleMessage("Почта"),
         "Map": MessageLookupByLibrary.simpleMessage("Карта"),
+        "More": MessageLookupByLibrary.simpleMessage("Подробнее"),
         "Password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "Phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "Profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "Register": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
         "Registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
-        "Search": MessageLookupByLibrary.simpleMessage("Поиск")
+        "Search": MessageLookupByLibrary.simpleMessage("Поиск"),
+        "WorkFrom": MessageLookupByLibrary.simpleMessage("Работаем с "),
+        "till": MessageLookupByLibrary.simpleMessage(" до ")
       };
 }

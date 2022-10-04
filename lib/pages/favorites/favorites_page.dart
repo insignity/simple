@@ -28,6 +28,7 @@ class FavoritesPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final restaurant = store.favorites[index];
                   return RestaurantItem(
+                    onTap: (){},
                     restaurant: restaurant,
                     onTapIcon: () => store.changeFavorite(
                       id: restaurant.id,

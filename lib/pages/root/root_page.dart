@@ -12,7 +12,7 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: const [
-        MainRouter(),
+        RestaurantsRouter(),
         MapRouter(),
         FavoritesRouter(),
         ProfileRouter(),
